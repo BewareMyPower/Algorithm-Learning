@@ -1,5 +1,5 @@
-// SimpleSplit.h: 简单的字符串分解，基于string::find
-// 只支持单个字符作为间隔符
+// SimpleSplit.h: 绠�鍗曠殑瀛楃涓插垎瑙ｏ紝鍩轰簬string::find
+// 鍙敮鎸佸崟涓瓧绗︿綔涓洪棿闅旂
 #pragma once
 #include <vector>
 #include <string>
@@ -10,7 +10,8 @@ std::vector<std::string> split(const std::string& str, char sep)
 	std::string::size_type pos1 = 0, pos2 = pos1;
 	while ((pos2 = str.find(sep, pos1)) != std::string::npos)
 	{
-		res.push_back(str.substr(pos1, pos2 - pos1));
+		if (pos2 - pos1 > 0)
+			res.push_back(str.substr(pos1, pos2 - pos1));
 		pos1 = pos2 + 1;
 	}
 	res.push_back(str.substr(pos1, pos2));
