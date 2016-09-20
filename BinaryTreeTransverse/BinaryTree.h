@@ -1,15 +1,15 @@
 //////////////////////////////////////////////////////////////////////////
 // Author:	XYZ
 // Date:	2016-09-19
-// BinaryTree.h: ¶ş²æÊ÷µÄÊµÏÖ
-// °üº¬ÁË¶ÁÈ¡ÌØ¶¨¸ñÊ½µÄÎÄµµÀ´½¨Á¢¶ş²æÊ÷
-// ¸ñÊ½ÎªÃ¿Ò»ĞĞ3¸ö×Ö·û´®±»","·Ö¿ª£¬ÒÀ´Î´ú±í¸ù¡¢×ó×Ó¡¢ÓÒ×Ó½Úµã
-// ÒÔ¼°ÊµÏÖÁËÏÈĞò¡¢ÖĞĞò¡¢ºóĞò±éÀú
-// Í¨¹ıÖĞĞò±éÀúÊµÏÖÊ÷½ÚµãµÄÊÍ·Å
-// ½áµãÀàĞÍÎª×Ö·û´®£¨´ÓÎÄµµÖĞ¶ÁÈ¡£©
-// Ê÷µÄÊı¾İ½á¹¹ÎªBinaryTree
-// ²âÊÔº¯ÊıÎªvoid use_binary_tree();
-// Êı¾İÎÄµµÎªdata.txt
+// BinaryTree.h: äºŒå‰æ ‘çš„å®ç°
+// åŒ…å«äº†è¯»å–ç‰¹å®šæ ¼å¼çš„æ–‡æ¡£æ¥å»ºç«‹äºŒå‰æ ‘
+// æ ¼å¼ä¸ºæ¯ä¸€è¡Œ3ä¸ªå­—ç¬¦ä¸²è¢«","åˆ†å¼€ï¼Œä¾æ¬¡ä»£è¡¨æ ¹ã€å·¦å­ã€å³å­èŠ‚ç‚¹
+// ä»¥åŠå®ç°äº†å…ˆåºã€ä¸­åºã€ååºéå†
+// é€šè¿‡ä¸­åºéå†å®ç°æ ‘èŠ‚ç‚¹çš„é‡Šæ”¾
+// ç»“ç‚¹ç±»å‹ä¸ºå­—ç¬¦ä¸²ï¼ˆä»æ–‡æ¡£ä¸­è¯»å–ï¼‰
+// æ ‘çš„æ•°æ®ç»“æ„ä¸ºBinaryTree
+// æµ‹è¯•å‡½æ•°ä¸ºvoid use_binary_tree();
+// æ•°æ®æ–‡æ¡£ä¸ºdata.txt
 //////////////////////////////////////////////////////////////////////////
 #ifndef _BINARY_TREE
 #define _BINARY_TREE
@@ -18,7 +18,7 @@
 #include <vector>
 #include <string>
 
-// Êı½áµã£¬ÔªËØÀàĞÍÎª×Ö·û´®
+// æ•°ç»“ç‚¹ï¼Œå…ƒç´ ç±»å‹ä¸ºå­—ç¬¦ä¸²
 struct TreeNode
 {
 	TreeNode(const std::string& _data, TreeNode* _left, TreeNode* _right)
@@ -26,7 +26,7 @@ struct TreeNode
 	std::string data;
 	TreeNode* lchild;
 	TreeNode* rchild;
-	~TreeNode() { std::cout << "Îö¹¹" << data << std::endl; }
+	~TreeNode() { std::cout << "ææ„" << data << std::endl; }
 };
 
 struct TreeNodePrinter
@@ -51,24 +51,24 @@ public:
 	BinaryTree(const std::string& filename) { createFromFile(filename); }
 	~BinaryTree() { PreOrderTraverse([](NodePtr p) { if (p) delete p; }); }
 
-	// ¶ÁÈ¡Ö¸¶¨¸ñÊ½ÎÄ¼ş£¬²¢½¨Á¢ÏàÓ¦µÄ¶ş²æÊ÷
+	// è¯»å–æŒ‡å®šæ ¼å¼æ–‡ä»¶ï¼Œå¹¶å»ºç«‹ç›¸åº”çš„äºŒå‰æ ‘
 	void createFromFile(const std::string& filename);
 
-	// ÏÈĞò±éÀú£¬¸ù->×ó×Ó->ÓÒ×Ó
+	// å…ˆåºéå†ï¼Œæ ¹->å·¦å­->å³å­
 	template <typename Pred>
 	void PreOrderTraverse(Pred _Pr)
 	{
 		__PreOrderTraverse(root, _Pr);
 	}
 
-	// ÖĞĞò±éÀú£¬×ó×Ó->¸ù->ÓÒ×Ó
+	// ä¸­åºéå†ï¼Œå·¦å­->æ ¹->å³å­
 	template <typename Pred>
 	void InOrderTraverse(Pred _Pr)
 	{
 		__InOrderTraverse(root, _Pr);
 	}
 
-	// ºóĞò±éÀú£¬×ó×Ó->ÓÒ×Ó->¸ù
+	// ååºéå†ï¼Œå·¦å­->å³å­->æ ¹
 	template <typename Pred>
 	void PostOrderTraverse(Pred _Pr)
 	{
@@ -76,10 +76,10 @@ public:
 	}
 
 private:
-	NodePtr root = nullptr;  // ¸ù½Úµã	
+	NodePtr root = nullptr;  // æ ¹èŠ‚ç‚¹	
 };
 
-// ²âÊÔÓÃÀı
+// æµ‹è¯•ç”¨ä¾‹
 inline void use_binary_tree()
 {
 	BinaryTree tree;
@@ -94,7 +94,7 @@ inline void use_binary_tree()
 
 template <typename Pred>
 void __PreOrderTraverse(TreeNode* curr, Pred _Pr)
-{	// ÏÈĞò±éÀúµÄ¾ßÌåÊµÏÖ
+{	// å…ˆåºéå†çš„å…·ä½“å®ç°
 	if (curr)
 	{
 		TreeNode* lchild = curr->lchild;
@@ -109,7 +109,7 @@ void __PreOrderTraverse(TreeNode* curr, Pred _Pr)
 
 template <typename Pred>
 void __InOrderTraverse(TreeNode* curr, Pred _Pr)
-{	// ÖĞĞò±éÀúµÄ¾ßÌåÊµÏÖ
+{	// ä¸­åºéå†çš„å…·ä½“å®ç°
 	if (curr)
 	{
 		TreeNode* lchild = curr->lchild;
@@ -124,7 +124,7 @@ void __InOrderTraverse(TreeNode* curr, Pred _Pr)
 
 template <typename Pred>
 void __PostOrderTraverse(TreeNode* curr, Pred _Pr)
-{	// ºóĞò±éÀúµÄ¾ßÌåÊµÏÖ
+{	// ååºéå†çš„å…·ä½“å®ç°
 	if (curr)
 	{
 		TreeNode* lchild = curr->lchild;
