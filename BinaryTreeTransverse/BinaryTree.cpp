@@ -1,4 +1,4 @@
-// BinaryTree.cpp: ¶ş²æÊ÷µÄ¾ßÌåÊµÏÖ
+// BinaryTree.cpp: äºŒå‰æ ‘çš„å…·ä½“å®ç°
 #include "stdafx.h"
 #include "BinaryTree.h"
 #include <iostream>
@@ -12,7 +12,7 @@ using namespace std;
 void BinaryTree::createFromFile(const std::string& filename)
 {
 	ifstream fin(filename);
-	list<Node*> leafs;  // ±£´æµ±Ç°ËùÓĞÒ¶½Úµã£¨¿ÉÒÔ²åÈë×Ó½Úµã£©
+	list<Node*> leafs;  // ä¿å­˜å½“å‰æ‰€æœ‰å¶èŠ‚ç‚¹ï¼ˆå¯ä»¥æ’å…¥å­èŠ‚ç‚¹ï¼‰
 
 	while (!fin.eof())
 	{
@@ -28,10 +28,10 @@ void BinaryTree::createFromFile(const std::string& filename)
 			leafs.emplace_back(root->rchild);
 		}
 		else
-		{	// ÕÒµ½²åÈë½Úµã
+		{	// æ‰¾åˆ°æ’å…¥èŠ‚ç‚¹
 			list<Node*>::iterator iter = find_if(leafs.begin(), leafs.end(),
 				[&](const Node* pNode) { return pNode->data == tokens[0]; });
-			// ²åÈë×ó×ÓÊ÷ºÍÓÒ×ÓÊ÷
+			// æ’å…¥å·¦å­æ ‘å’Œå³å­æ ‘
 			(*iter)->lchild = new Node{ tokens[1], nullptr, nullptr };
 			(*iter)->rchild = new Node{ tokens[2], nullptr, nullptr };
 			leafs.emplace_back((*iter)->lchild);
