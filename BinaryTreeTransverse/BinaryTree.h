@@ -100,10 +100,8 @@ void __PreOrderTraverse(TreeNode* curr, Pred _Pr)
 		TreeNode* lchild = curr->lchild;
 		TreeNode* rchild = curr->rchild;
 		_Pr(curr);
-		if (lchild)
-			__PreOrderTraverse(lchild, _Pr);
-		if (rchild)
-			__PreOrderTraverse(rchild, _Pr);
+		__PreOrderTraverse(lchild, _Pr);
+		__PreOrderTraverse(rchild, _Pr);
 	}
 }
 
@@ -114,11 +112,8 @@ void __InOrderTraverse(TreeNode* curr, Pred _Pr)
 	{
 		TreeNode* lchild = curr->lchild;
 		TreeNode* rchild = curr->rchild;
-		if (lchild)
-			__InOrderTraverse(lchild, _Pr);
-		_Pr(curr);
-		if (rchild)
-			__InOrderTraverse(rchild, _Pr);
+		__InOrderTraverse(lchild, _Pr);
+		_Pr(curr);		__InOrderTraverse(rchild, _Pr);
 	}
 }
 
@@ -128,11 +123,7 @@ void __PostOrderTraverse(TreeNode* curr, Pred _Pr)
 	if (curr)
 	{
 		TreeNode* lchild = curr->lchild;
-		TreeNode* rchild = curr->rchild;
-		if (lchild)
-			__PostOrderTraverse(lchild, _Pr);
-		if (rchild)
-			__PostOrderTraverse(rchild, _Pr);
+		TreeNode* rchild = curr->rchild;		__PostOrderTraverse(lchild, _Pr);		__PostOrderTraverse(rchild, _Pr);
 		_Pr(curr);
 	}
 }
